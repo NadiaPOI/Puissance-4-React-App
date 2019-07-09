@@ -4,7 +4,11 @@ function Home() {
   return (
     <div>
       <h1>Puissance 4</h1>
-      <button type="button" id="start" onClick={() => console.log('clicked')}>
+      <button
+        type='button'
+        id='start'
+        onClick={() => console.log('is clicked')}
+      >
         Start a Game
       </button>
     </div>
