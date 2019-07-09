@@ -6,7 +6,7 @@ script:
   - npm run lint
 
 deploy:
-  local_dir: public
+  local_dir: build
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
