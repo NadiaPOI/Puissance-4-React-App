@@ -6,12 +6,13 @@ function Home() {
 
   return (
     <div>
-      {!isDisplay && (
+      {isDisplay ? (
+        <GameForm />
+      ) : (
         <button type='button' id='start' onClick={() => setDisplay(true)}>
           Start a Game
         </button>
       )}
-      {isDisplay && <GameForm />}
     </div>
   );
 }
