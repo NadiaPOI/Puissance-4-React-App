@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
+import GameForm from './GameForm';
 
 function Home() {
+  const [isDisplay, setDisplay] = useState(false);
+
   return (
     <div>
-      <h1>Puissance 4</h1>
-      <button
-        type='button'
-        id='start'
-        onClick={() => console.log('is clicked')}
-      >
-        Start a Game
-      </button>
+      {isDisplay ? (
+        <GameForm />
+      ) : (
+        <button type='button' id='start' onClick={() => setDisplay(true)}>
+          Start a Game
+        </button>
+      )}
     </div>
   );
 }
