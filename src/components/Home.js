@@ -2,14 +2,14 @@ import React, {useState} from 'react';
 import GameForm from './GameForm';
 
 function Home() {
-  const [isDisplay, setDisplay] = useState(false);
+  const [isFormDisplayed, setFormDisplay] = useState(false);
 
   return (
     <div>
-      {isDisplay ? (
+      {isFormDisplayed ? (
         <GameForm />
       ) : (
-        <button type='button' id='start' onClick={() => setDisplay(true)}>
+        <button type='button' id='start' onClick={() => setFormDisplay(true)}>
           Start a Game
         </button>
       )}
