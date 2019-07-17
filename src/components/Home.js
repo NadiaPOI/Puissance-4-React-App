@@ -29,7 +29,7 @@ function Home() {
           ) : (
             <button
               type='button'
-              id='start'
+              className='start'
               onClick={() => setFormDisplay(true)}
             >
               Start a Game

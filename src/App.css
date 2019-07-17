@@ -9,7 +9,7 @@ h1 {
   text-align: center;
 }
 
-#start {
+.start {
   margin: 50px auto;
   padding: 10px;
   display: block;
@@ -24,8 +24,8 @@ form {
   margin: auto;
 }
 
-#row,
-#col {
+.row,
+.col {
   width: 250px;
   margin: 10px 0;
   border-radius: 10px;
@@ -43,7 +43,7 @@ input[type='submit'] {
   display: block;
 }
 
-#gameboard {
+.gameboard {
   margin: 0 auto;
   border-spacing: 0;
 }

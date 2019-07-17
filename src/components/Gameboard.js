@@ -10,11 +10,10 @@ function generateGameboard(lengthRow, lengthColumn) {
 
 function Gameboard({rows, columns}) {
   let gameboard = generateGameboard(rows, columns);
-  console.log(gameboard);
   const board = gameboard.map((row, indexRow) => {
     const squares = row.map((square, indexCol) => {
       return (
-        <td key={indexCol} id={indexCol}>
+        <td key={indexCol} className={indexCol}>
           <img src={emptySquare} alt='img' />
         </td>
       );
@@ -27,7 +26,7 @@ function Gameboard({rows, columns}) {
   });
 
   return (
-    <table id='gameboard'>
+    <table className='gameboard'>
       <tbody>{board}</tbody>
     </table>
   );

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import InputForm from './InputForm';
 
 function GameForm({statusDisplay, valueRows, valueColumns}) {
   const [initialValueRows, setValueRows] = useState(0);
@@ -21,27 +22,17 @@ function GameForm({statusDisplay, valueRows, valueColumns}) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor='row'>Please choose the number of rows :</label>
-      <input
-        type='number'
+      <InputForm
+        textLabel='Please choose the number of rows :'
         name='row'
-        id='row'
         placeholder='Number of rows'
-        min='4'
-        max='50'
-        required
         value={initialValueRows}
         onChange={handleChangeRows}
       />
-      <label htmlFor='col'>Please choose the number of columns :</label>
-      <input
-        type='number'
+      <InputForm
+        textLabel='Please choose the number of columns :'
         name='col'
-        id='col'
         placeholder='Number of columns'
-        min='4'
-        max='50'
-        required
         value={initialValueColumns}
         onChange={handleChangeColumns}
       />
