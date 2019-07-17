@@ -1,15 +1,8 @@
 import React, {useState} from 'react';
 
-function GameForm() {
+function GameForm({statusDisplay, valueRows, valueColumns}) {
   const [initialValueRows, setValueRows] = useState(0);
   const [initialValueColumns, setValueColumns] = useState(0);
-
-  function generateGameboard(lengthRow, lengthColumn) {
-    let gameboard = new Array(lengthRow)
-      .fill(null)
-      .map(() => new Array(lengthColumn).fill(''));
-    return gameboard;
-  }
 
   function handleChangeRows() {
     setValueRows(initialValueRows + 1);
@@ -21,9 +14,9 @@ function GameForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    let gameboard = generateGameboard(initialValueRows, initialValueColumns);
-    console.log(gameboard);
-    return gameboard;
+    statusDisplay();
+    valueRows(initialValueRows);
+    valueColumns(initialValueColumns);
   }
 
   return (
