@@ -9,7 +9,7 @@ h1 {
   text-align: center;
 }
 
-#start {
+.start {
   margin: 50px auto;
   padding: 10px;
   display: block;
@@ -24,8 +24,8 @@ form {
   margin: auto;
 }
 
-#row,
-#col {
+.row,
+.col {
   width: 250px;
   margin: 10px 0;
   border-radius: 10px;
@@ -41,4 +41,26 @@ input[type='submit'] {
   border-color: cadetblue;
   text-align: center;
   display: block;
+}
+
+.gameboard {
+  margin: 0 auto;
+  border-spacing: 0;
+}
+
+tr {
+  padding: 0;
+  cursor: pointer;
+}
+
+td {
+  border: 1px solid #002ae0;
+  background-color: #002ae0;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  width: 80px;
+  height: 80px;
 }
