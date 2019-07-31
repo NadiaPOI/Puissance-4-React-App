@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Puissance-4-React-App/precache-manifest.8b43e3a6adf6597f926e11c1d7ac2081.js"
+  "/Puissance-4-React-App/precache-manifest.1a8e5bc5c9b02950072da378c295117a.js"
 );
 
 self.addEventListener('message', (event) => {
