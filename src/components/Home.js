@@ -7,8 +7,8 @@ function Home() {
   const [isFormDisplayed, setFormDisplay] = useState(false);
   const [isBoardDisplayed, setBoardDisplay] = useState(false);
 
-  const [initialValueRows, setValueRows] = useState(0);
-  const [initialValueColumns, setValueColumns] = useState(0);
+  const [initialValueRows, setValueRows] = useState(4);
+  const [initialValueColumns, setValueColumns] = useState(4);
 
   const boardDisplay = () => setBoardDisplay(true);
 
