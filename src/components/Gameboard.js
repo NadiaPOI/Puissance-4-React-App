@@ -1,53 +1,69 @@
 import React, {useState} from 'react';
 
-import Square from './Square';
-import generateGameboard from '../scripts/generateGameboard.logic';
-import addPawn from '../scripts/addPawn.logic';
-import aIAddPawn from '../scripts/aIAddPawn.logic';
-import findEmptyColumn from '../scripts/findEmptyColumns.logic';
+import generateGameboard from 'scripts/generateGameboard.logic';
+import addPawn from 'scripts/addPawn.logic';
+import aIAddPawn from 'scripts/aIAddPawn.logic';
+import findEmptyColumn from 'scripts/findEmptyColumns.logic';
+import isWinner from 'scripts/isWinner.logic';
+
+import Winner from './Winner';
+import Row from './Row';
 
 function Gameboard({rows, columns}) {
   const initialBoard = generateGameboard(rows, columns);
   const [board, setBoard] = useState(initialBoard);
 
-  function renderGameboard(board) {
-    return board.map((row, indexRow) => (
-      <tr key={indexRow} id={indexRow}>
-        {row.map((square, indexSquare) => {
-          return renderSquares(indexSquare, indexRow, square);
-        })}
-      </tr>
-    ));
-  }
+  const [winner, setWinner] = useState(false);
+  const [colorWinner, setColorWinner] = useState();
 
-  function renderSquares(indexSquare, indexRow, square) {
+  const rowsElements = board.map((row, indexRow) => {
     return (
-      <Square
-        key={indexSquare}
-        indexSquare={indexSquare}
-        indexRow={indexRow}
-        colorSquare={square}
-        actionOnClick={handleClick}
-      />
+      <Row row={row} key={indexRow} indexRow={indexRow} onClick={handleClick} />
     );
-  }
+  });
 
   function addRandomRedPawn(board) {
     const randomColumn = findEmptyColumn(board, Math.random);
     aIAddPawn(board, randomColumn);
+
+    const indexRow = board.findIndex((row) => {
+      return row.includes('R');
+    });
+
+    checkIfWinner(board, indexRow, randomColumn, 'R');
   }
 
-  function handleClick(indexCol) {
+  function checkIfWinner(board, row, column, colorPlayer) {
+    const playerWin = isWinner(board, row, column, colorPlayer);
+
+    if (playerWin) {
+      setColorWinner(colorPlayer);
+      setWinner(true);
+    }
+    return playerWin;
+  }
+
+  function handleClick(indexCol, indexRow) {
     const newBoard = board.slice();
-    addPawn(newBoard, indexCol, 'Y');
-    addRandomRedPawn(newBoard);
-    return setBoard(newBoard);
+
+    if (!winner) {
+      addPawn(newBoard, indexCol, 'Y');
+      const yellowWinner = checkIfWinner(newBoard, indexRow, indexCol, 'Y');
+
+      if (!yellowWinner) {
+        addRandomRedPawn(newBoard);
+      }
+    }
+    setBoard(newBoard);
   }
 
   return (
-    <table className='gameboard'>
-      <tbody>{renderGameboard(board)}</tbody>
-    </table>
+    <>
+      {winner && <Winner player={colorWinner} />}
+      <table className='gameboard'>
+        <tbody>{rowsElements}</tbody>
+      </table>
+    </>
   );
 }
 

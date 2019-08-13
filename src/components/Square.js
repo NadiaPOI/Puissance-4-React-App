@@ -4,7 +4,7 @@ import emptySquare from 'assets/empty.png';
 import yellowSquare from 'assets/yellow.png';
 import redSquare from 'assets/red.png';
 
-function Square({indexSquare, colorSquare, actionOnClick}) {
+function Square({indexSquare, indexRow, colorSquare, actionOnClick}) {
   let pathImage = emptySquare;
 
   if (colorSquare === 'Y') {
@@ -13,7 +13,10 @@ function Square({indexSquare, colorSquare, actionOnClick}) {
     pathImage = redSquare;
   }
   return (
-    <td className={indexSquare} onClick={() => actionOnClick(indexSquare)}>
+    <td
+      className={indexSquare}
+      onClick={() => actionOnClick(indexSquare, indexRow)}
+    >
       <img src={pathImage} alt='img' />
     </td>
   );

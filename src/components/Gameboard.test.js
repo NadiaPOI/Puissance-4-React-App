@@ -20,4 +20,9 @@ describe('Gameboard', () => {
     expect(board.length).toEqual(5);
     expect(row.length).toEqual(6);
   });
+
+  it('Should not render the Winner component by default', () => {
+    const boardWrapper = shallow(<Gameboard />);
+    expect(boardWrapper.find('Winner').exists()).toBe(false);
+  });
 });
