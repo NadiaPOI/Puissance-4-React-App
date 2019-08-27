@@ -64,3 +64,31 @@ img {
   width: 80px;
   height: 80px;
 }
+
+.displayWinner {
+  border: 2px solid black;
+  box-shadow: 2px 2px black;
+  width: 30%;
+  margin: auto;
+  background-color: white;
+  position: absolute;
+  top: 35%;
+  right: 35%;
+}
+
+.displayWinner p {
+  text-align: center;
+  color: #002ae0;
+  font-weight: bold;
+  font-size: large;
+}
+
+.restart {
+  display: block;
+  margin: 10px auto;
+  border-radius: 5px;
+  padding: 5px;
+  color: #002ae0;
+  background-color: white;
+  cursor: pointer;
+}

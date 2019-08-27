@@ -16,11 +16,11 @@ function Home() {
   const valueColumns = (value) => setValueColumns(value);
 
   return (
-    <div>
+    <>
       {isBoardDisplayed ? (
         <Gameboard rows={initialValueRows} columns={initialValueColumns} />
       ) : (
-        <div>
+        <>
           {isFormDisplayed ? (
             <GameForm
               statusDisplay={boardDisplay}
@@ -36,9 +36,9 @@ function Home() {
               Start a Game
             </button>
           )}
-        </div>
+        </>
       )}
-    </div>
+    </>
   );
 }
 
