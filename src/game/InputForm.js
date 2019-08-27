@@ -11,8 +11,8 @@ function InputForm({textLabel, name, placeholder, value, onChange}) {
         placeholder={placeholder}
         min='4'
         max='50'
-        required
         value={value}
+        required
         onChange={onChange}
       />
     </div>

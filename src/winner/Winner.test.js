@@ -17,4 +17,14 @@ describe('Winner', () => {
     const winnerWrapper = shallow(<Winner player='R' />);
     expect(winnerWrapper.find('p').text()).toBe('Great !! Red player win !');
   });
+
+  it('Should call restartGame when the button restart is clicked', () => {
+    const props = {
+      restartGame: jest.fn(),
+      mockClick: jest.fn()
+    };
+    const winnerWrapper = shallow(<Winner {...props} />);
+    winnerWrapper.find('button').simulate('click');
+    expect(props.restartGame).toBeCalled();
+  });
 });

@@ -6,24 +6,19 @@ import aIAddPawn from 'scripts/aIAddPawn.logic';
 import findEmptyColumn from 'scripts/findEmptyColumns.logic';
 import isWinner from 'scripts/isWinner.logic';
 
-import Winner from './Winner';
+import Winner from '../winner/Winner';
 import Row from './Row';
 
-function Gameboard({rows, columns}) {
+function Gameboard({rows, columns, boardDisplayed, formDisplayed}) {
   const initialBoard = generateGameboard(rows, columns);
-  const [board, setBoard] = useState(initialBoard);
 
+  const [board, setBoard] = useState(initialBoard);
   const [winner, setWinner] = useState(false);
   const [colorWinner, setColorWinner] = useState();
 
-  const rowsElements = board.map((row, indexRow) => {
-    return (
-      <Row row={row} key={indexRow} indexRow={indexRow} onClick={handleClick} />
-    );
-  });
-
   function addRandomRedPawn(board) {
     const randomColumn = findEmptyColumn(board, Math.random);
+
     aIAddPawn(board, randomColumn);
 
     const indexRow = board.findIndex((row) => {
@@ -57,9 +52,20 @@ function Gameboard({rows, columns}) {
     setBoard(newBoard);
   }
 
+  function restartGame() {
+    boardDisplayed(false);
+    formDisplayed();
+  }
+
+  const rowsElements = board.map((row, indexRow) => {
+    return (
+      <Row row={row} key={indexRow} indexRow={indexRow} onClick={handleClick} />
+    );
+  });
+
   return (
     <>
-      {winner && <Winner player={colorWinner} />}
+      {winner && <Winner player={colorWinner} restartGame={restartGame} />}
       <table className='gameboard'>
         <tbody>{rowsElements}</tbody>
       </table>
