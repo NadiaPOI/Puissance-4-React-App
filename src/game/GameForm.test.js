@@ -8,9 +8,9 @@ describe('GameForm', () => {
 
   beforeEach(() => {
     const props = {
-      statusDisplay: jest.fn(),
-      valueRows: jest.fn(),
-      valueColumns: jest.fn(),
+      boardDisplayed: jest.fn(),
+      addRows: jest.fn(),
+      addColumns: jest.fn(),
       mockSubmit: jest.fn()
     };
 

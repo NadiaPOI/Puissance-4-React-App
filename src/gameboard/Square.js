@@ -12,6 +12,7 @@ function Square({indexSquare, indexRow, colorSquare, actionOnClick}) {
   } else if (colorSquare === 'R') {
     pathImage = redSquare;
   }
+
   return (
     <td
       className={indexSquare}
