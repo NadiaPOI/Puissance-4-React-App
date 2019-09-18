@@ -9,10 +9,14 @@ import isWinner from 'scripts/isWinner.logic';
 import Winner from '../winner/Winner';
 import Row from './Row';
 
-function Gameboard({rows, columns, boardDisplayed, formDisplayed}) {
-  const initialBoard = generateGameboard(rows, columns);
+function Gameboard() {
+  const params = new URL(window.location.href).searchParams;
+  const rows = Number(params.get('row'));
+  const columns = Number(params.get('col'));
 
+  const initialBoard = generateGameboard(rows, columns);
   const [board, setBoard] = useState(initialBoard);
+
   const [winner, setWinner] = useState(false);
   const [colorWinner, setColorWinner] = useState();
 
@@ -52,11 +56,6 @@ function Gameboard({rows, columns, boardDisplayed, formDisplayed}) {
     setBoard(newBoard);
   }
 
-  function restartGame() {
-    boardDisplayed(false);
-    formDisplayed();
-  }
-
   const rowsElements = board.map((row, indexRow) => {
     return (
       <Row row={row} key={indexRow} indexRow={indexRow} onClick={handleClick} />
@@ -65,7 +64,7 @@ function Gameboard({rows, columns, boardDisplayed, formDisplayed}) {
 
   return (
     <>
-      {winner && <Winner player={colorWinner} restartGame={restartGame} />}
+      {winner && <Winner player={colorWinner} />}
       <table className='gameboard'>
         <tbody>{rowsElements}</tbody>
       </table>

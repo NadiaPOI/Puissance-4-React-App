@@ -10,12 +10,17 @@ h1 {
 }
 
 .start {
+  width: 100px;
   margin: 50px auto;
   padding: 10px;
   display: block;
   border-radius: 10px;
+  box-shadow: 2px 2px black;
+  text-align: center;
+  color: black;
   border-color: cadetblue;
   background-color: cadetblue;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -72,7 +77,7 @@ img {
   margin: auto;
   background-color: white;
   position: absolute;
-  top: 35%;
+  top: 50%;
   right: 35%;
 }
 
@@ -84,11 +89,16 @@ img {
 }
 
 .restart {
+  width: 100px;
   display: block;
-  margin: 10px auto;
+  margin: 20px auto;
   border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: 1px 1px black;
   padding: 5px;
-  color: #002ae0;
-  background-color: white;
+  color: white;
+  background-color: #0029e0b0;
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
 }

@@ -1,12 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-function Winner({player, restartGame}) {
+function Winner({player}) {
   return (
     <div className='displayWinner'>
       <p>Great !! {player === 'Y' ? 'Yellow' : 'Red'} player win !</p>
-      <button className='restart' onClick={() => restartGame()}>
+      <Link className='restart' to='/'>
         Start again
-      </button>
+      </Link>
     </div>
   );
 }
