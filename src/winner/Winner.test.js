@@ -1,5 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
+import {Link} from 'react-router-dom';
+
 import Winner from './Winner';
 
 describe('Winner', () => {
@@ -18,13 +20,13 @@ describe('Winner', () => {
     expect(winnerWrapper.find('p').text()).toBe('Great !! Red player win !');
   });
 
-  it('Should call restartGame when the button restart is clicked', () => {
-    const props = {
-      restartGame: jest.fn(),
-      mockClick: jest.fn()
-    };
-    const winnerWrapper = shallow(<Winner {...props} />);
-    winnerWrapper.find('button').simulate('click');
-    expect(props.restartGame).toBeCalled();
+  it('Should change path to home', () => {
+    const winnerWrapper = shallow(
+      <Winner>
+        <Link to='/' />
+      </Winner>
+    );
+    winnerWrapper.find('Link').simulate('click');
+    expect(document.location.pathname).toBe('/');
   });
 });

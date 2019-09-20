@@ -2,7 +2,7 @@ import React from 'react';
 
 function InputForm({textLabel, name, placeholder, value, onChange}) {
   return (
-    <div>
+    <>
       <label htmlFor='row'>{textLabel}</label>
       <input
         type='number'
@@ -15,7 +15,7 @@ function InputForm({textLabel, name, placeholder, value, onChange}) {
         required
         onChange={onChange}
       />
-    </div>
+    </>
   );
 }
 

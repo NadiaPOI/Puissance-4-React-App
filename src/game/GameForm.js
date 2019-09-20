@@ -1,25 +1,24 @@
 import React, {useState} from 'react';
+
 import InputForm from './InputForm';
 
-function GameForm({boardDisplayed, addRows, addColumns}) {
+function GameForm({history}) {
   const [rows, setRows] = useState(4);
   const [columns, setColumns] = useState(4);
 
   function handleChangeRows(e) {
-    const valueRows = parseInt(e.target.value);
+    const valueRows = e.target.value ? parseInt(e.target.value) : null;
     setRows(valueRows);
   }
 
   function handleChangeColumns(e) {
-    const valueColumns = parseInt(e.target.value);
+    const valueColumns = e.target.value ? parseInt(e.target.value) : null;
     setColumns(valueColumns);
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    boardDisplayed(true);
-    addRows(rows);
-    addColumns(columns);
+  function handleSubmit(e) {
+    e.preventDefault();
+    history.push(`/gameboard?row=${rows}&col=${columns}`);
   }
 
   return (
