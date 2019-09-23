@@ -1,6 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function InputForm({textLabel, name, placeholder, value, onChange}) {
+export default function InputForm({
+  textLabel,
+  name,
+  placeholder,
+  value,
+  onChange
+}) {
   return (
     <>
       <label htmlFor='row'>{textLabel}</label>
@@ -19,4 +26,14 @@ function InputForm({textLabel, name, placeholder, value, onChange}) {
   );
 }
 
-export default InputForm;
+InputForm.defaultProps = {
+  value: 4
+};
+
+InputForm.propTypes = {
+  textLabel: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  value: PropTypes.number,
+  onChange: PropTypes.func.isRequired
+};

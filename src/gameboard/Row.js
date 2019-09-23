@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Square from './Square';
 
-function Row({row, indexRow, onClick}) {
+export default function Row({row, indexRow, onClick}) {
   return (
     <tr row={row} key={indexRow} id={indexRow}>
       {row.map((square, indexSquare) => {
@@ -19,4 +21,8 @@ function Row({row, indexRow, onClick}) {
   );
 }
 
-export default Row;
+Row.propTypes = {
+  row: PropTypes.arrayOf(PropTypes.oneOf(['', 'Y', 'R'])).isRequired,
+  indexRow: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired
+};
