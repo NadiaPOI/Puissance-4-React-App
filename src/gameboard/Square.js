@@ -1,10 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import emptySquare from 'assets/empty.png';
 import yellowSquare from 'assets/yellow.png';
 import redSquare from 'assets/red.png';
 
-function Square({indexSquare, indexRow, colorSquare, actionOnClick}) {
+export default function Square({
+  indexSquare,
+  indexRow,
+  colorSquare,
+  actionOnClick
+}) {
   let pathImage = emptySquare;
 
   if (colorSquare === 'Y') {
@@ -23,4 +29,9 @@ function Square({indexSquare, indexRow, colorSquare, actionOnClick}) {
   );
 }
 
-export default Square;
+Square.propTypes = {
+  indexSquare: PropTypes.number.isRequired,
+  indexRow: PropTypes.number.isRequired,
+  colorSquare: PropTypes.string.isRequired,
+  actionOnClick: PropTypes.func.isRequired
+};

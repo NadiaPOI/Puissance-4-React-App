@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
-function Winner({player}) {
+export default function Winner({player}) {
   return (
     <div className='displayWinner'>
       <p>Great !! {player === 'Y' ? 'Yellow' : 'Red'} player win !</p>
@@ -12,4 +13,6 @@ function Winner({player}) {
   );
 }
 
-export default Winner;
+Winner.propTypes = {
+  player: PropTypes.string.isRequired
+};
