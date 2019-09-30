@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Square from './Square';
 
-export default function Row({row, indexRow, onClick}) {
+export default function Row({gameboard, row, indexRow, onClick, winner}) {
   return (
     <tr row={row} key={indexRow} id={indexRow}>
       {row.map((square, indexSquare) => {
@@ -13,7 +13,7 @@ export default function Row({row, indexRow, onClick}) {
             indexSquare={indexSquare}
             indexRow={indexRow}
             colorSquare={square}
-            actionOnClick={() => onClick(indexSquare, indexRow)}
+            actionOnClick={() => onClick(indexSquare)}
           />
         );
       })}

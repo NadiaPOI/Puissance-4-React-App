@@ -6,7 +6,10 @@ import Row from './Row';
 describe('Row', () => {
   it('Should render Rows', () => {
     const props = {
-      row: new Array(5)
+      gameboard: new Array(5),
+      row: new Array(5),
+      indexRow: 0,
+      onClick: jest.fn()
     };
     const rowWrapper = shallow(<Row {...props} />);
     expect(rowWrapper.exists()).toBe(true);
