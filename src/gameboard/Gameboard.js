@@ -1,75 +1,61 @@
-import React, {useState} from 'react';
-
-import generateGameboard from 'scripts/generateGameboard.logic';
-import addPawn from 'scripts/addPawn.logic';
-import aIAddPawn from 'scripts/aIAddPawn.logic';
-import findEmptyColumn from 'scripts/findEmptyColumns.logic';
-import isWinner from 'scripts/isWinner.logic';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import Winner from '../winner/Winner';
 import Row from './Row';
 
-function Gameboard() {
-  const params = new URL(window.location.href).searchParams;
-  const rows = Number(params.get('row'));
-  const columns = Number(params.get('col'));
+function Gameboard({
+  gameboard,
+  winner,
+  colorWinner,
+  loadGameboard,
+  addPawn,
+  resetGameboard
+}) {
+  if (gameboard === null) {
+    const params = new URL(window.location.href).searchParams;
+    const rows = Number(params.get('row'));
+    const columns = Number(params.get('col'));
 
-  const initialBoard = generateGameboard(rows, columns);
-  const [board, setBoard] = useState(initialBoard);
+    gameboard = loadGameboard(rows, columns);
 
-  const [winner, setWinner] = useState(false);
-  const [colorWinner, setColorWinner] = useState();
-
-  function addRandomRedPawn(board) {
-    const randomColumn = findEmptyColumn(board, Math.random);
-
-    aIAddPawn(board, randomColumn);
-
-    const indexRow = board.findIndex((row) => {
-      return row.includes('R');
-    });
-
-    checkIfWinner(board, indexRow, randomColumn, 'R');
+    return 'loading';
   }
 
-  function checkIfWinner(board, row, column, colorPlayer) {
-    const playerWin = isWinner(board, row, column, colorPlayer);
-
-    if (playerWin) {
-      setColorWinner(colorPlayer);
-      setWinner(true);
-    }
-    return playerWin;
-  }
-
-  function handleClick(indexCol, indexRow) {
-    const newBoard = board.slice();
-
-    if (!winner) {
-      addPawn(newBoard, indexCol, 'Y');
-      const yellowWinner = checkIfWinner(newBoard, indexRow, indexCol, 'Y');
-
-      if (!yellowWinner) {
-        addRandomRedPawn(newBoard);
-      }
-    }
-    setBoard(newBoard);
-  }
-
-  const rowsElements = board.map((row, indexRow) => {
+  const rowsElements = gameboard.map((row, indexRow) => {
     return (
-      <Row row={row} key={indexRow} indexRow={indexRow} onClick={handleClick} />
+      <Row
+        gameboard={gameboard}
+        row={row}
+        key={indexRow}
+        indexRow={indexRow}
+        onClick={(indexCol) => addPawn(gameboard, indexCol, winner)}
+      />
     );
   });
 
   return (
     <>
-      {winner && <Winner player={colorWinner} />}
+      {winner && <Winner player={colorWinner} onClick={resetGameboard} />}
       <table className='gameboard'>
         <tbody>{rowsElements}</tbody>
       </table>
     </>
   );
 }
+Gameboard.defaultProps = {
+  gameboard: null,
+  winner: false,
+  colorWinner: null
+};
+
+Gameboard.propTypes = {
+  gameboard: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  winner: PropTypes.bool.isRequired,
+  colorWinner: PropTypes.string,
+  loadGameboard: PropTypes.func.isRequired,
+  addPawn: PropTypes.func.isRequired,
+  resetGameboard: PropTypes.func.isRequired
+};
 
 export default Gameboard;

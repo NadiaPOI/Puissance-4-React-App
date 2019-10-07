@@ -13,5 +13,8 @@ export default function addPawn(gameboard, column, colorPlayer) {
   const lastRow = emptiesRows.length - 1;
   emptiesRows[lastRow][column] = colorPlayer;
 
-  return gameboard;
+  return {
+    gameboard,
+    rowPlayed: lastRow
+  };
 }

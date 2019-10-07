@@ -8,7 +8,13 @@ describe('InputForm', () => {
     const mockChange = jest.fn();
     const value = 5;
 
-    const inputWrapper = shallow(<InputForm onChange={mockChange} />);
+    const inputWrapper = shallow(
+      <InputForm
+        onChange={mockChange}
+        textLabel='Please choose the number of rows :'
+        name='row'
+      />
+    );
     inputWrapper
       .find('input')
       .first()

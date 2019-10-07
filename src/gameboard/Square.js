@@ -6,10 +6,11 @@ import yellowSquare from 'assets/yellow.png';
 import redSquare from 'assets/red.png';
 
 export default function Square({
+  gameboard,
   indexSquare,
-  indexRow,
   colorSquare,
-  actionOnClick
+  actionOnClick,
+  winner
 }) {
   let pathImage = emptySquare;
 
@@ -22,7 +23,7 @@ export default function Square({
   return (
     <td
       className={indexSquare}
-      onClick={() => actionOnClick(indexSquare, indexRow)}
+      onClick={() => actionOnClick(gameboard, indexSquare, winner)}
     >
       <img src={pathImage} alt='img' />
     </td>

@@ -33,7 +33,7 @@ InputForm.defaultProps = {
 InputForm.propTypes = {
   textLabel: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   value: PropTypes.number,
   onChange: PropTypes.func.isRequired
 };

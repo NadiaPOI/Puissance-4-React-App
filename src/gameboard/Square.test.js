@@ -9,7 +9,9 @@ describe('Square', () => {
 
   beforeEach(() => {
     props = {
+      indexRow: 0,
       indexSquare: 0,
+      colorSquare: '',
       actionOnClick: jest.fn()
     };
 
