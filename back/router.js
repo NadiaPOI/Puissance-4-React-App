@@ -1,100 +1,88 @@
-const User = require("./user");
 const bcrypt = require("bcryptjs");
+const sanitize = require("mongo-sanitize");
+
+const User = require("./user");
 
 exports.init = app => {
   app.get("/users", async (req, res) => {
     const users = await User.find();
-    res.send(users);
-  });
-
-  app.post("/users", async (req, res) => {
-    const { firstname, email, password } = req.body;
-
-    const user = new User({
-      firstname: firstname,
-      email: email,
-      password: password
-    });
-
-    await user.save(err => {
-      if (err) {
-        console.log("Error registering new user please try again.");
-      }
-      console.log(`User save : ${user}`);
-      /* Ou await user.save(); // sauvegarde asynchrone du nouveau user
-              res.json(userNew); */
-      res.send(user);
-    });
+    return res.status(200).send(users);
   });
 
   app.post("/login", async (req, res) => {
-    const { email, password } = req.body;
-    console.log(req.body);
+    const email = sanitize(req.body.email);
+    const password = sanitize(req.body.password);
 
+    //Le cas où l'email ou bien le password ne serait pas soumit ou null
     if (!email || !password) {
-      //Le cas où l'email ou bien le password ne serait pas soumit ou nul
       return res.status(400).send({
-        text: "Requête invalide"
+        text: "Bad request"
       });
     }
-    try {
-      // On check si l'utilisateur existe en base
-      const findUser = await User.findOne({ email });
-      const userPassw = findUser.password;
-      console.log("findUser", findUser);
 
-      findUser.authenticate(password, userPassw, (err, samePassword) => {
-        console.log(samePassword);
+    // On check si l'utilisateur existe en base
+    try {
+      const user = await User.findOne({ email: { $in: [email] } });
+      const username = user.firstname;
+      const userPassw = user.password;
+
+      // On check si le password correspond
+      user.authenticate(password, userPassw, (err, samePassword) => {
         if (!samePassword) {
           return res.status(401).send({
-            text: "Mot de passe incorrect"
+            text: "Wrong password"
           });
         }
 
         if (samePassword) {
+          const token = user.getToken(user);
+          req.session.token = token;
           return res.status(200).send({
-            token: findUser.getToken(),
-            text: "Authentification réussi"
+            text: "Authentication successful",
+            token: req.session.token,
+            username: username
           });
         }
       });
     } catch (error) {
       return res.status(404).send({
-        text: "L'utilisateur n'existe pas"
+        text: "User does not exist"
       });
     }
   });
 
   app.post("/signup", async (req, res) => {
-    const { firstname, email, password } = req.body;
+    const firstname = sanitize(req.body.firstname);
+    const email = sanitize(req.body.email);
+    const password = sanitize(req.body.password);
+
+    //Le cas où l'email le password ou le firstname ne serait pas soumit ou null
     if (!email || !firstname || !password) {
-      //Le cas où l'email le password ou le firstname ne serait pas soumit ou null
       return res.status(400).send({
-        text: "Requête invalide"
+        text: "Bad request"
       });
     }
-    // Création d'un objet user, dans lequel on hash le mot de passe
-    const user = {
-      firstname,
-      email,
-      password: password
-    };
+    // Création d'un user
+
     // On check en base si l'utilisateur existe déjà
     try {
-      const findUser = await User.findOne({
-        email
-      });
-      if (findUser) {
-        return res.status(400).send({
-          text: "L'utilisateur existe déjà"
+      const user = await User.findOne({ email: { $in: [email] } });
+      if (user) {
+        return res.status(405).send({
+          text: "User already exists"
         });
       }
     } catch (error) {
-      return res.status(500).send({ error });
+      return res.status(500).send(error);
     }
+
+    // Sauvegarde de l'utilisateur en base et hashage du mot de passe
     try {
-      // Sauvegarde de l'utilisateur en base
-      const userData = new User(user);
+      const userData = new User({
+        firstname,
+        email,
+        password
+      });
 
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(userData.password, salt, async function(
@@ -102,16 +90,35 @@ exports.init = app => {
           hashedPassword
         ) {
           if (err) {
-            console.log(err);
+            console.error(err);
           }
           userData.password = hashedPassword;
           const userObject = await userData.save();
-          return res.status(200).send({
-            text: "Succès",
-            token: userObject.getToken()
+
+          return res.status(201).send({
+            text: "Succes, new user saved",
+            token: userObject.getToken(userObject)
           });
         });
       });
+    } catch (error) {
+      return res.status(500).send({ error });
+    }
+  });
+
+  app.get("/users/:id", async (req, res) => {
+    const userId = sanitize(req.params.id);
+
+    if (!userId) {
+      return res.status(400).send({
+        text: "Bad request"
+      });
+    }
+
+    try {
+      await User.deleteOne({ _id: userId });
+
+      return res.status(200).redirect("/users");
     } catch (error) {
       return res.status(500).send({ error });
     }

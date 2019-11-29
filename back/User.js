@@ -12,7 +12,6 @@ const userShema = new mongoose.Schema({
 
 userShema.methods = {
   authenticate: (password, userPassword, callback) => {
-    // la fonction flechée ne fixe pas le this => undefined // ajout parametre userPassword
     return bcrypt.compare(password, userPassword, (err, samePassword) => {
       if (err) {
         return callback(err, samePassword);
@@ -21,7 +20,14 @@ userShema.methods = {
       }
     });
   },
-  getToken: () => jwt.encode(this, config.secret)
+  getToken: user => {
+    const payload = {
+      firstname: user.firstname,
+      email: user.email
+    };
+
+    return jwt.encode(payload, config.secret);
+  }
 };
 
 module.exports = mongoose.model("user", userShema);
