@@ -5,7 +5,6 @@ const app = require("./server");
 // Connect to db
 //Ici la base de données se nomme « users », si elle n'existe pas elle sera créée automatiquement si une insertion est faite.
 mongoose
-  // warning console DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
   .set("useCreateIndex", true)
   .connect("mongodb://localhost:27017/users", {
     useNewUrlParser: true,
