@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import ReactRouterPropTypes from 'react-router-prop-types';
+import React, { useState } from "react";
+import ReactRouterPropTypes from "react-router-prop-types";
 
-import InputForm from './InputForm';
+import InputForm from "./InputForm";
 
-export default function GameForm({history}) {
+export default function GameForm({ history }) {
   const [rows, setRows] = useState(4);
   const [columns, setColumns] = useState(4);
 
@@ -25,24 +25,24 @@ export default function GameForm({history}) {
   return (
     <form onSubmit={handleSubmit}>
       <InputForm
-        textLabel='Please choose the number of rows :'
-        name='row'
-        placeholder='Number of rows'
+        textLabel="Please choose the number of rows :"
+        name="row"
+        placeholder="Number of rows"
         value={rows}
         onChange={handleChangeRows}
       />
       <InputForm
-        textLabel='Please choose the number of columns :'
-        name='col'
-        placeholder='Number of columns'
+        textLabel="Please choose the number of columns :"
+        name="col"
+        placeholder="Number of columns"
         value={columns}
         onChange={handleChangeColumns}
       />
-      <input type='submit' value='Generate gameboard' />
+      <input type="submit" value="Generate gameboard" />
     </form>
   );
 }
 
 GameForm.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired
+  history: ReactRouterPropTypes.history
 };

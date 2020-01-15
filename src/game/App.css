@@ -9,8 +9,8 @@ h1 {
   text-align: center;
 }
 
-.start {
-  width: 100px;
+.button {
+  width: 150px;
   margin: 50px auto;
   padding: 10px;
   display: block;
@@ -37,7 +37,7 @@ form {
   padding: 5px;
 }
 
-input[type='submit'] {
+input[type="submit"] {
   background-color: cadetblue;
   cursor: pointer;
   border-radius: 10px;
