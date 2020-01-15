@@ -9,14 +9,18 @@ describe("Admin", () => {
     expect(adminWrapper.find("ul").exists()).toBe(true);
   });
 
-  it("Should fetch data from url : http://localhost:8800/users", done => {
-    const response = (global.fetch = jest.fn(() => {
-      return Promise.resolve(res => res.json()).then(data => data);
+  it("Should fetch data from url :/users", done => {
+    const mockFetch = (global.fetch = jest.fn(() => {
+      return Promise.resolve({
+        json: () => {
+          return Promise.resolve([]);
+        }
+      });
     }));
 
     mount(<Admin />);
 
-    expect(response).toHaveBeenCalledWith("http://localhost:8800/users");
+    expect(mockFetch).toHaveBeenCalledWith("/users");
     done();
   });
 });
