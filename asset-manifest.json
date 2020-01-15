@@ -1,15 +1,22 @@
 {
   "files": {
-    "main.css": "/Puissance-4-React-App/static/css/main.dad7638a.chunk.css",
-    "main.js": "/Puissance-4-React-App/static/js/main.fa16e683.chunk.js",
-    "main.js.map": "/Puissance-4-React-App/static/js/main.fa16e683.chunk.js.map",
-    "runtime~main.js": "/Puissance-4-React-App/static/js/runtime~main.bd3c9225.js",
-    "runtime~main.js.map": "/Puissance-4-React-App/static/js/runtime~main.bd3c9225.js.map",
-    "static/js/2.e5b63854.chunk.js": "/Puissance-4-React-App/static/js/2.e5b63854.chunk.js",
-    "static/js/2.e5b63854.chunk.js.map": "/Puissance-4-React-App/static/js/2.e5b63854.chunk.js.map",
+    "main.css": "/Puissance-4-React-App/static/css/main.70157e83.chunk.css",
+    "main.js": "/Puissance-4-React-App/static/js/main.7d101171.chunk.js",
+    "main.js.map": "/Puissance-4-React-App/static/js/main.7d101171.chunk.js.map",
+    "runtime-main.js": "/Puissance-4-React-App/static/js/runtime-main.7f82be40.js",
+    "runtime-main.js.map": "/Puissance-4-React-App/static/js/runtime-main.7f82be40.js.map",
+    "static/js/2.9984d079.chunk.js": "/Puissance-4-React-App/static/js/2.9984d079.chunk.js",
+    "static/js/2.9984d079.chunk.js.map": "/Puissance-4-React-App/static/js/2.9984d079.chunk.js.map",
     "index.html": "/Puissance-4-React-App/index.html",
-    "precache-manifest.12958ca415e600804118aa4fc8aff094.js": "/Puissance-4-React-App/precache-manifest.12958ca415e600804118aa4fc8aff094.js",
+    "precache-manifest.f4c6c581f4ed23cb868f139b271e8acc.js": "/Puissance-4-React-App/precache-manifest.f4c6c581f4ed23cb868f139b271e8acc.js",
     "service-worker.js": "/Puissance-4-React-App/service-worker.js",
-    "static/css/main.dad7638a.chunk.css.map": "/Puissance-4-React-App/static/css/main.dad7638a.chunk.css.map"
-  }
+    "static/css/main.70157e83.chunk.css.map": "/Puissance-4-React-App/static/css/main.70157e83.chunk.css.map",
+    "static/js/2.9984d079.chunk.js.LICENSE": "/Puissance-4-React-App/static/js/2.9984d079.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7f82be40.js",
+    "static/js/2.9984d079.chunk.js",
+    "static/css/main.70157e83.chunk.css",
+    "static/js/main.7d101171.chunk.js"
+  ]
 }
