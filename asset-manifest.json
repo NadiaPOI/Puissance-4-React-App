@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Puissance-4-React-App/static/css/main.70157e83.chunk.css",
-    "main.js": "/Puissance-4-React-App/static/js/main.7d101171.chunk.js",
-    "main.js.map": "/Puissance-4-React-App/static/js/main.7d101171.chunk.js.map",
+    "main.js": "/Puissance-4-React-App/static/js/main.1c2d6206.chunk.js",
+    "main.js.map": "/Puissance-4-React-App/static/js/main.1c2d6206.chunk.js.map",
     "runtime-main.js": "/Puissance-4-React-App/static/js/runtime-main.7f82be40.js",
     "runtime-main.js.map": "/Puissance-4-React-App/static/js/runtime-main.7f82be40.js.map",
     "static/js/2.9984d079.chunk.js": "/Puissance-4-React-App/static/js/2.9984d079.chunk.js",
     "static/js/2.9984d079.chunk.js.map": "/Puissance-4-React-App/static/js/2.9984d079.chunk.js.map",
     "index.html": "/Puissance-4-React-App/index.html",
-    "precache-manifest.f4c6c581f4ed23cb868f139b271e8acc.js": "/Puissance-4-React-App/precache-manifest.f4c6c581f4ed23cb868f139b271e8acc.js",
+    "precache-manifest.0d19f94ac46738986da2cac2c65caa7c.js": "/Puissance-4-React-App/precache-manifest.0d19f94ac46738986da2cac2c65caa7c.js",
     "service-worker.js": "/Puissance-4-React-App/service-worker.js",
     "static/css/main.70157e83.chunk.css.map": "/Puissance-4-React-App/static/css/main.70157e83.chunk.css.map",
     "static/js/2.9984d079.chunk.js.LICENSE": "/Puissance-4-React-App/static/js/2.9984d079.chunk.js.LICENSE"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.7f82be40.js",
     "static/js/2.9984d079.chunk.js",
     "static/css/main.70157e83.chunk.css",
-    "static/js/main.7d101171.chunk.js"
+    "static/js/main.1c2d6206.chunk.js"
   ]
 }

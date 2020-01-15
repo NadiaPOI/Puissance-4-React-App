@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f0c5bdee9d3a31719b634baebc41e55a",
+    "revision": "78ef66abe5c49dcd960a522f383bf52d",
     "url": "/Puissance-4-React-App/index.html"
   },
   {
-    "revision": "8df4c309a5a9e59abacf",
+    "revision": "4007de32a68368addf83",
     "url": "/Puissance-4-React-App/static/css/main.70157e83.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Puissance-4-React-App/static/js/2.9984d079.chunk.js.LICENSE"
   },
   {
-    "revision": "8df4c309a5a9e59abacf",
-    "url": "/Puissance-4-React-App/static/js/main.7d101171.chunk.js"
+    "revision": "4007de32a68368addf83",
+    "url": "/Puissance-4-React-App/static/js/main.1c2d6206.chunk.js"
   },
   {
     "revision": "71bb30fcac4005fb15c0",
