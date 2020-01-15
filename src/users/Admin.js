@@ -4,7 +4,7 @@ export default function Admin({ history }) {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8800/users")
+    fetch("/users")
       .then(response => {
         return response.json();
       })
@@ -18,7 +18,7 @@ export default function Admin({ history }) {
   }, []);
 
   function deleteUser(id) {
-    fetch(`http://localhost:8800/users/${id}`)
+    fetch(`/users/${id}`)
       .then(res => {
         if (res.status === 200) {
           res.json().then(data => {
