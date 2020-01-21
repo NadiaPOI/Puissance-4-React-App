@@ -14,11 +14,11 @@ function Home({ username }) {
   return (
     <>
       {displayAlert && (
-        <div class="alert alert-primary" role="alert">
+        <div className="alert alert-primary" role="alert">
           Hello {username} ! Happy to see you again :-)
           <button
             type="button"
-            class="close"
+            className="close"
             data-dismiss="alert"
             aria-label="Close"
             onClick={() => handleClick()}
