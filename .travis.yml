@@ -1,18 +1,7 @@
-language: 'node_js'
-node_js: '12'
+language: "node_js"
+node_js: "12"
 
 script:
   - npm run test
   - npm run lint
   - npm run build
-
-deploy:
-  local_dir: build
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN
-  keep_history: true
-  repo: NadiaPOI/Puissance-4-React-App
-  target_branch: gh-pages
-  on:
-    branch: master

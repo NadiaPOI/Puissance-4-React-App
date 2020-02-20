@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import Winner from '../winner/Winner';
-import Row from './Row';
+import Winner from "../winner/Winner";
+import Row from "./Row";
 
 function Gameboard({
   gameboard,
@@ -14,12 +14,12 @@ function Gameboard({
 }) {
   if (gameboard === null) {
     const params = new URL(window.location.href).searchParams;
-    const rows = Number(params.get('row'));
-    const columns = Number(params.get('col'));
+    const rows = Number(params.get("row"));
+    const columns = Number(params.get("col"));
 
     gameboard = loadGameboard(rows, columns);
 
-    return 'loading';
+    return "loading";
   }
 
   const rowsElements = gameboard.map((row, indexRow) => {
@@ -29,7 +29,7 @@ function Gameboard({
         row={row}
         key={indexRow}
         indexRow={indexRow}
-        onClick={(indexCol) => addPawn(gameboard, indexCol, winner)}
+        onClick={indexCol => addPawn(gameboard, indexCol, winner)}
       />
     );
   });
@@ -37,7 +37,7 @@ function Gameboard({
   return (
     <>
       {winner && <Winner player={colorWinner} onClick={resetGameboard} />}
-      <table className='gameboard'>
+      <table className="gameboard">
         <tbody>{rowsElements}</tbody>
       </table>
     </>
@@ -53,9 +53,9 @@ Gameboard.propTypes = {
   gameboard: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   winner: PropTypes.bool.isRequired,
   colorWinner: PropTypes.string,
-  loadGameboard: PropTypes.func.isRequired,
-  addPawn: PropTypes.func.isRequired,
-  resetGameboard: PropTypes.func.isRequired
+  loadGameboard: PropTypes.func,
+  addPawn: PropTypes.func,
+  resetGameboard: PropTypes.func
 };
 
 export default Gameboard;
