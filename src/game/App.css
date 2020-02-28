@@ -2,14 +2,15 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: grey;
+  background-color: #eae8e8;
 }
 
 h1 {
   text-align: center;
+  margin-bottom: 60px;
 }
 
-.start {
+.button {
   width: 100px;
   margin: 50px auto;
   padding: 10px;
@@ -25,7 +26,7 @@ h1 {
 }
 
 form {
-  width: 280px;
+  width: 290px;
   margin: auto;
 }
 
@@ -71,14 +72,16 @@ img {
 }
 
 .displayWinner {
-  border: 2px solid black;
-  box-shadow: 2px 2px black;
-  width: 30%;
+  border: 2px solid grey;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px grey;
+  width: 36%;
   margin: auto;
   background-color: white;
   position: absolute;
-  top: 50%;
-  right: 35%;
+  top: 35%;
+  right: 32%;
 }
 
 .displayWinner p {
@@ -89,16 +92,17 @@ img {
 }
 
 .restart {
-  width: 100px;
+  width: 120px;
   display: block;
   margin: 20px auto;
   border-radius: 5px;
   border: 1px solid black;
   box-shadow: 1px 1px black;
-  padding: 5px;
-  color: white;
-  background-color: #0029e0b0;
+  padding: 10px;
+  color: #002ae0;
+  background-color: white;
   text-align: center;
   text-decoration: none;
+  font-weight: bold;
   cursor: pointer;
 }
